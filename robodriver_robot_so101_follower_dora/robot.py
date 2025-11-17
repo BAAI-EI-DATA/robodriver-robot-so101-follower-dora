@@ -369,7 +369,7 @@ class SO101FollowerDoraRobot(Robot):
                     if motor in name
         }
         dt_ms = (time.perf_counter() - start) * 1e3
-        logger.debug(f"{self} read state: {dt_ms:.1f}ms")
+        logger.debug(f"{self} read state: {dt_ms:.1f} ms")
 
         # Capture images from cameras
         for cam_key, _cam in self.cameras.items():
@@ -384,7 +384,7 @@ class SO101FollowerDoraRobot(Robot):
             # self.robot_dora_node.recv_images[name]
             
             dt_ms = (time.perf_counter() - start) * 1e3
-            logger.debug(f"{self} read {cam_key}: {dt_ms:.1f}ms")
+            logger.debug(f"{self} read {cam_key}: {dt_ms:.1f} ms")
 
         return obs_dict
 
