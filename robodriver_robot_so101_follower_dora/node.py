@@ -67,7 +67,7 @@ class SO101FollowerDoraRobotNode(DoraRobotNode):
                     event_id, data = self.send_queue.get_nowait()
                     # 关键：在单线程环境中转换为PyArrow
                     arrow_array = pa.array(list(map(float, data)), type=pa.float32())
-                    logger.debug(f"{self} send event_id:{event_id}, value:{data}")
+                    logger.debug(f"{self} \nsend event_id: {event_id}, \nvalue: {data}")
                     self.node.send_output(event_id, arrow_array)
                     self.send_queue.task_done()
                 except queue.Empty:
