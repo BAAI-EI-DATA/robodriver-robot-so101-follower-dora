@@ -402,7 +402,7 @@ class SO101FollowerDoraRobot(Robot):
         # goal_gripper_numpy = np.array([t.item() for t in goal_gripper], dtype=np.float32)
         # position = np.concatenate([goal_joint_numpy, goal_gripper_numpy], axis=0)
 
-        logger.debug(f"action: {action}, goal_joint:{goal_joint}, goal_joint_numpy:{goal_joint_numpy}")
+        # logger.debug(f"action: {action}, goal_joint:{goal_joint}, goal_joint_numpy:{goal_joint_numpy}")
         self.robot_dora_node.dora_send(f"action_joint", goal_joint_numpy)
         
         return {f"{motor}.pos": val for motor, val in action.items()}

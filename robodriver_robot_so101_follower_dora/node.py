@@ -38,7 +38,7 @@ class SO101FollowerDoraRobotNode(DoraRobotNode):
 
     def dora_send(self, event_id, data):
         """线程安全的发送方法 - 只负责入队"""
-        logger.debug(f"{self} queue send event_id:{event_id}, value:{data}")
+        # logger.debug(f"{self} queue send event_id:{event_id}, value:{data}")
         try:
             # 限制发送频率 (可选)
             if time.time() - self.last_send_time < 0.005:  # 200Hz上限
