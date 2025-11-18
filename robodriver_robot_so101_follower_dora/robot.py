@@ -225,7 +225,7 @@ class SO101FollowerDoraRobot(Robot):
         
         log_message = "\n[连接成功] 所有设备已就绪:\n"
         log_message += "\n".join(f"  - {msg}" for msg in success_messages)
-        log_message += f"\n  总耗时: {time.perf_counter() - start_time:.2f}秒\n"
+        log_message += f"\n  总耗时: {time.perf_counter() - start_time:.2f} 秒\n"
         logger.info(log_message)
         # ===========================
 
