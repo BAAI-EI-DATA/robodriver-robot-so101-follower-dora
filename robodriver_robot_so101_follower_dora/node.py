@@ -25,8 +25,8 @@ class SO101FollowerDoraRobotNode(DoraRobotNode):
         self.node = Node("so101_follower_dora")
         
         self.send_queue = queue.Queue(maxsize=100)
-        self.recv_images: Dict[str, Any] = {}
-        self.recv_joint: Dict[str, Any] = {}
+        self.recv_images: Dict[str, float] = {}
+        self.recv_joint: Dict[str, float] = {}
         self.recv_images_status: Dict[str, int] = {}
         self.recv_joint_status: Dict[str, int] = {}
         self.lock = threading.Lock()
@@ -67,7 +67,7 @@ class SO101FollowerDoraRobotNode(DoraRobotNode):
                     event_id, data = self.send_queue.get_nowait()
                     # 关键：在单线程环境中转换为PyArrow
                     arrow_array = pa.array(list(map(float, data)), type=pa.float32())
-                    logger.debug(f"{self} \nsend event_id: {event_id}, \nvalue: {data}")
+                    # logger.debug(f"{self} \nsend event_id: {event_id}, \nvalue: {data}")
                     self.node.send_output(event_id, arrow_array)
                     self.send_queue.task_done()
                 except queue.Empty:
@@ -131,7 +131,8 @@ class SO101FollowerDoraRobotNode(DoraRobotNode):
     def _process_joint(self, event_id, data):
         """处理关节数据"""
         if data is not None:
-            self.recv_joint[event_id] = data
+            scalar_value = float(data.item())
+            self.recv_joint[event_id] = scalar_value
             self.recv_joint_status[event_id] = CONNECT_TIMEOUT_FRAME
 
     def start(self):
