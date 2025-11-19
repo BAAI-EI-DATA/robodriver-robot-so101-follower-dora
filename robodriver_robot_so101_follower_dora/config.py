@@ -43,7 +43,7 @@ class SO101FollowerDoraRobotConfig(RobotConfig):
 
     cameras: Dict[str, CameraConfig] = field(
         default_factory=lambda: {
-            "image_top": OpenCVCameraConfig(
+            "image_top_rgb": OpenCVCameraConfig(
                 index_or_path=4,
                 fps=30,
                 width=640,

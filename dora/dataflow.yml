@@ -55,8 +55,8 @@ nodes:
   - id: so101_follower_dora
     path: dynamic
     inputs:
-      image_top: camera_top/image
       image_wrist: camera_wrist/image
+      image_top_rgb: camera_top/image
       image_top_dep: camera_top_dep/image
       follower_joint_shoulder_pan: arm_so101_follower/joint_shoulder_pan
       follower_joint_shoulder_lift: arm_so101_follower/joint_shoulder_lift
